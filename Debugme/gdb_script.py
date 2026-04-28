@@ -51,22 +51,6 @@ class FlagExtractorBreakpoint(BypassCheckBreakpoint):
             print("\t[*] Found the Flag: HTB{%s}" % (flag, ))
         return True
 
-
-class BreakpointInit:
-    def __init__(self, break_points: List[str]) -> None:
-        self._break_points = break_points
-        self._init_br()
-
-    def __iter__(self):
-        return iter(self._break_points)
-
-    def _init_br(self) -> None:
-        for br in self:
-            BypassCheckBreakpoint(br)
-
-    @classmethod
-    def from_list(cls, break_points: List[str]) -> Self:
-        return cls(break_points)
     
 def manage_breakpoints(break_points: List[str]) -> None:
     for br in break_points:
